@@ -44,6 +44,7 @@ matrix:
 before_install:
   # we spawn in /home/travis/build/nextcloud/calendar
   # go to /home/travis/build/
+  - tar --version
   - cd ../../
   - wget https://phar.phpunit.de/phpunit-5.7.phar
   - chmod +x phpunit-5.7.phar
