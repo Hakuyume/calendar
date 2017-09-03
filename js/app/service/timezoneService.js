@@ -43,7 +43,10 @@ app.service('TimezoneService', function (TimezoneDataProvider, Timezone) {
 	 * @returns {string}
 	 */
 	this.current = function () {
+		const dateTimeFormat = Intl.DateTimeFormat;
+		Intl.DateTimeFormat = function() {return {resolvedOptions: function() {return {};}};};
 		const tz = jstz.determine();
+		Intl.DateTimeFormat = dateTimeFormat;
 		let tzname = tz ? tz.name() : 'UTC';
 
 		if (TimezoneDataProvider.aliases[tzname]) {
